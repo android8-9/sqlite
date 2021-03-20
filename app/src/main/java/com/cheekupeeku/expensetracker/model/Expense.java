@@ -7,6 +7,15 @@ public class Expense {
    private String edate;
    private int amount;
    private String paymentMode;
+   private String categoryName;
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
 
     public Expense(int id, int categoryId, String tag, String edate, int amount, String paymentMode) {
         this.id = id;

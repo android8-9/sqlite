@@ -3,6 +3,7 @@ package com.cheekupeeku.expensetracker;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
@@ -15,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
+import com.cheekupeeku.expensetracker.adapter.ExpenseAdapter;
 import com.cheekupeeku.expensetracker.dao.CategoryDAO;
 import com.cheekupeeku.expensetracker.dao.ExpenseDAO;
 import com.cheekupeeku.expensetracker.databinding.ActivityMainBinding;
@@ -27,11 +29,22 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     String date;
+    ArrayList<Expense> al;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        al = ExpenseDAO.getExpenseList(MainActivity.this);
+        ExpenseAdapter adapter = new ExpenseAdapter(this,al);
+        binding.rv.setAdapter(adapter);
+        binding.rv.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+
     }
 
     @Override
@@ -84,9 +97,10 @@ public class MainActivity extends AppCompatActivity {
                     e.setPaymentMode(paymentMode);
                     e.setTag(tag);
                     boolean status = ExpenseDAO.save(MainActivity.this,e);
-                    if(status)
+                    if(status) {
                         Toast.makeText(MainActivity.this, "Expense saved", Toast.LENGTH_SHORT).show();
-                    else
+                        onStart();
+                    }else
                         Toast.makeText(MainActivity.this, "Something went wrong..", Toast.LENGTH_SHORT).show();
                 }
             });
