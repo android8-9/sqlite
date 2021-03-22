@@ -19,6 +19,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         sql = "create table expense(id integer primary key AUTOINCREMENT, category_id integer, tag varchar(100),edate varchar(11),amount integer,payment_mode varchar(7))";
         db.execSQL(sql);
+
+        sql = "create table user(mobile varchar(11),password varchar(10))";
+        db.execSQL(sql);
     }
 
     @Override

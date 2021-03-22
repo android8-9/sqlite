@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="30dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardMaxElevation="10dp"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="5dp"
+    android:padding="10dp"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:background="@color/blue">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mobile"
+            android:textStyle="bold"
+            android:padding="7dp"
+            android:background="@drawable/et_decoration"
+            android:id="@+id/etMobile"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:textStyle="bold"
+            android:padding="7dp"
+            android:background="@drawable/et_decoration"
+            android:id="@+id/etPassword"
+            android:layout_marginTop="10dp"
+
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/btnAction"
+            android:background="@color/white"
+            android:textColor="@color/blue"
+            android:text="Register"
+            android:textAlignment="center"
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="New user ?"
+            android:textColor="@color/white"
+            android:textAlignment="textEnd"
+            android:visibility="gone"
+            android:id="@+id/tvNewUser"
+            />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+</LinearLayout>

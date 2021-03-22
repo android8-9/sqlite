@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add("Add expenses");
+        menu.add("Logout");
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -106,6 +109,15 @@ public class MainActivity extends AppCompatActivity {
             });
             ab.setNegativeButton("Cancel",null);
             ab.show();
+        }
+        else if(title.equals("Logout")){
+            SharedPreferences sp = getSharedPreferences("user",MODE_PRIVATE);
+            SharedPreferences.Editor editor  = sp.edit();
+            editor.clear();
+            editor.commit();
+            Intent in = new Intent(MainActivity.this,LoginActivity.class);
+            startActivity(in);
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }
